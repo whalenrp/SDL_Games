@@ -1,0 +1,7 @@
+Initialize TTF_Init() multiple times?
+	needed in Player and derived classes, but 
+	should I initialize every time I use it or..
+	YOU CAN INITIALIZE MULTIPLE TIMES
+
+Continue creating CEvent class for Blackjack inheritance
+	and then implement onEvent from Blackjack.h
