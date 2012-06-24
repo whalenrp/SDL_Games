@@ -1,4 +1,5 @@
 #include "Challenger.h"
+#include <iostream>
 
 
 Challenger::Challenger(): Player(), 
@@ -14,6 +15,9 @@ Challenger::Challenger(): Player(),
 Challenger::~Challenger(){}
 
 bool Challenger::onInit(){
+	// Initialize base class.
+	if (Player::onInit() == false) return false;
+
 	char hp[] = "./gfx/hit_pressed.png";
 	char hu[] = "./gfx/hit_unpressed.png";
 	char sp[] = "./gfx/stand_pressed.png";
@@ -32,8 +36,9 @@ bool Challenger::onInit(){
 		((font = TTF_OpenFont("ttf/elsewher.ttf", 16))==0))
 		return false;
 
+
 	// set the text surfaces for initial wager and starting money.
-	SDL_Color textColor = {.r=0, .g=0, .b=0, .unused=0};
+	SDL_Color textColor = {0, 0, 0, 0};
 	std::ostringstream o;
 	o << wager;
 	surf_text_wager = TTF_RenderText_Solid(font, o.str().c_str(), textColor);

@@ -4,10 +4,12 @@
 #include <SDL/SDL.h>
 #include "SDL/SDL_mixer.h"
 #include "SDL/SDL_ttf.h"
+
+#include "CEvent.h"
 #include "Challenger.h"
 #include "Deck.h"
 
-class Blackjack :public CEvent{
+class Blackjack : public CEvent{
 
 	// Surfaces
 	private:
@@ -30,9 +32,11 @@ class Blackjack :public CEvent{
 
 		int onExecute();
 
-		void onEvent();
+		void OnEvent(SDL_Event* event);
 
-			void onLButtonDown(int mx, int my);
+			void OnExit();
+
+			void OnLButtonDown(int mx, int my);
 
 		void onRender();
 

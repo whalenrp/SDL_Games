@@ -6,7 +6,7 @@
 #include "Player.h"
 #include <sstream>
 
-class Challenger : private Player {
+class Challenger : public Player {
 	private: 
 		size_t wager;
 		int money;

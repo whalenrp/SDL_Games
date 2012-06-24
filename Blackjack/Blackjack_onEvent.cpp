@@ -1,11 +1,14 @@
 #include "Blackjack.h"
 
-void Blackjack::onEvent(){
-
+void Blackjack::OnEvent(SDL_Event* event){
+	CEvent::OnEvent(event);
 }
 
+void Blackjack::OnExit(){
+	running = false;
+}
 
-void Blackjack::onLButtonDown(int mx, int my){
-
+void Blackjack::OnLButtonDown(int mx, int my){
+	
 }
 

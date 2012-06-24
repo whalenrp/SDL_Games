@@ -11,7 +11,7 @@ Player::~Player(){}
 bool Player::onInit(){
 	if ((font = TTF_OpenFont("ttf/elsewher.ttf", 16)) == 0)
 		return false;
-	SDL_Color textColor = {.r=0, .g=0, .b=0, .unused=0};
+	SDL_Color textColor = {0, 0, 0, 0};
 	std::ostringstream o;
 	o << handValue;
 	surf_text_status = TTF_RenderText_Solid(font, o.str().c_str(), textColor);
@@ -52,7 +52,7 @@ int Player::addCard(Card* card){
 
 
 int Player::getHandValue(){
-	SDL_Color textColor = {.r=0, .g=0, .b=0, .unused=0};
+	SDL_Color textColor = {0, 0, 0, 0};
 	if (handValue < 21){
 		// display the value of the hand in the text
 		std::ostringstream o;

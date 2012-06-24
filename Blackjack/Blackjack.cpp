@@ -1,4 +1,5 @@
 #include "Blackjack.h"
+#include <iostream>
 
 
 Blackjack::Blackjack(): running(true),
@@ -11,16 +12,18 @@ void Blackjack::Reset(){
 }
 
 int Blackjack::onExecute(){
-	if (OnInit() == false) return -1;
+	if (onInit() == false){ 
+		std::cout << "onInit failed" << std::endl;
+		return -1;
+	}
 
 	SDL_Event event;
 
 	while (running){
 		while (SDL_PollEvent(&event)){
-			onEvent(&event);
+			OnEvent(&event);
 		}
 
-		onLoop();
 		onRender();
 	}
 
