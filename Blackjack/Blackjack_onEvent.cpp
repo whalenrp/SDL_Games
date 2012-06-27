@@ -9,6 +9,6 @@ void Blackjack::OnExit(){
 }
 
 void Blackjack::OnLButtonDown(int mx, int my){
-	
+	player1.addCard(mDeck.getNextCard());
 }
 

@@ -183,7 +183,7 @@ void Deck::shuffle(){
 }
 
 
-const Card* Deck::getNextCard(){
+Card* const Deck::getNextCard(){
 	if (curCard >= 52)
 		shuffle();
 	return cards[curCard++];

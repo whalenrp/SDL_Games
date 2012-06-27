@@ -71,7 +71,7 @@ class Deck{
 		// Shuffle cards (randomize)
 		void shuffle();
 
-		const Card* getNextCard();
+		Card* const getNextCard();
 
 		// clean up all cards.
 		// This must be called before the cards vector is erased.

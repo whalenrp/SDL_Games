@@ -28,7 +28,7 @@ void Player::resetHand(){
 	getHandValue();
 }
 
-int Player::addCard(Card* card){
+int Player::addCard(Card* const card){
 	if (playerNumCards >= MAX_NUM_CARDS)
 		throw playerNumCards;
 
@@ -88,11 +88,11 @@ void Player::onDraw(SDL_Surface* surf_dest, int x, int y){
 	// newer cards appearing on top of the stack.
 	for (size_t i=0; i< playerNumCards; ++i){
 		// 20px increment down x for each card.
-		playerCards[i]->draw(surf_dest, x+(20*i) + CARD_WIDTH, y);
+		playerCards[i]->draw(surf_dest, x+(60*i) + CARD_WIDTH, y);
 	}
 
 	// Draw the text for the hand value underneath the cards
-	CSurface::OnDraw(surf_dest, surf_text_status, x, y+CARD_HEIGHT + 10);
+	CSurface::OnDraw(surf_dest, surf_text_status, x + 100, y+CARD_HEIGHT + 10);
 }
 
 void Player::onCleanup(){

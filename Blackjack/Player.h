@@ -45,7 +45,7 @@ class Player{
 
 		// returns the value of the hand and takes care of updating
 		// the hand values.
-		virtual int addCard(Card* card);
+		virtual int addCard(Card* const card);
 		virtual void onDraw(SDL_Surface* surf_dest, int x, int y) =0;
 		virtual void onCleanup();
 
