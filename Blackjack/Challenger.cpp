@@ -57,17 +57,17 @@ void Challenger::onDraw(SDL_Surface* surf_dest, int x, int y){
 
 	// Draw the text fields for wager and money values.
 	CSurface::OnDraw(surf_dest, 
-		surf_text_wager, x + 300, y + 318 + 40);
+		surf_text_wager, x + TEXT_WAGER_X, y + TEXT_WAGER_Y);
 	CSurface::OnDraw(surf_dest, 
-		surf_text_money, x + 300, y + 318 + 65);
+		surf_text_money, x + TEXT_MONEY_X, y + TEXT_MONEY_Y);
 
 	// Draw the buttons based on the mouse click state
 	CSurface::OnDraw(surf_dest, surf_chip10, x, y);
-	CSurface::OnDraw(surf_dest, surf_chip5, x, y + 110);
-	CSurface::OnDraw(surf_dest, surf_chip1, x, y + 220);
+	CSurface::OnDraw(surf_dest, surf_chip5, x, y + CHIP_5_Y);
+	CSurface::OnDraw(surf_dest, surf_chip1, x, y + CHIP_1_Y);
 
-	CSurface::OnDraw(surf_dest, surf_hit_unpressed, x+50, y + 318 + 40);
-	CSurface::OnDraw(surf_dest, surf_stand_unpressed, x+180, y+ 318 + 40);
+	CSurface::OnDraw(surf_dest, surf_hit_unpressed, x+HIT_X, y + HIT_Y);
+	CSurface::OnDraw(surf_dest, surf_stand_unpressed, x+STAND_X, y+STAND_Y);
 }
 
 void Challenger::onCleanup(){

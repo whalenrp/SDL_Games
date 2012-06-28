@@ -78,7 +78,7 @@ int Player::getHandValue(){
 		state = PLAYER_BUST;
 		surf_text_status = TTF_RenderText_Solid(
 			font, 
-			"Busted! You lose.", 
+			"Bust!", 
 			textColor);
 		return handValue;
 	}
@@ -88,14 +88,15 @@ void Player::onDraw(SDL_Surface* surf_dest, int x, int y){
 	// Draw all the cards stacked skewed on top of eachother, 
 	// newer cards appearing on top of the stack.
 	for (size_t i=0; i< playerNumCards; ++i){
-		// 20px increment down x for each card.
-		playerCards[i]->draw(surf_dest, x+(50*i) + CARD_WIDTH + 20, y);
+		// 50px increment down x for each card.
+		playerCards[i]->draw(surf_dest, x+(50*i) + CARD_OFFSET, y);
 	}
 
 	// Draw the text for the hand value underneath the cards
 	//CSurface::OnDraw(surf_dest, surf_text_status, x + 100, y+CARD_HEIGHT + 10);
 	if (handValue !=0)
-		CSurface::OnDraw(surf_dest, surf_text_status, x + 250, y + 318 + 10);
+		CSurface::OnDraw(
+				surf_dest, surf_text_status, x + TEXT_STATUS_X, y + TEXT_STATUS_Y);
 }
 
 void Player::onCleanup(){

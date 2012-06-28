@@ -7,6 +7,19 @@
 #include <sstream>
 
 class Challenger : public Player {
+	//Layout UI values
+	public:
+		static const int TEXT_WAGER_X = 300;
+		static const int TEXT_WAGER_Y = Player::CARD_HEIGHT + 40;
+		static const int TEXT_MONEY_X = 300;
+		static const int TEXT_MONEY_Y = Player::CARD_HEIGHT + 65;
+		static const int CHIP_5_Y = 110;
+		static const int CHIP_1_Y = 2*CHIP_5_Y;
+		static const int HIT_X = 50;
+		static const int HIT_Y = Player::CARD_HEIGHT + 40;
+		static const int STAND_X = 180;
+		static const int STAND_Y = HIT_Y;
+
 	private: 
 		size_t wager;
 		int money;

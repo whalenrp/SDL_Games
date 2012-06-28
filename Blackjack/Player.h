@@ -15,8 +15,12 @@ class Player{
 			PLAYER_BLACKJACK
 			};
 
-		static const size_t CARD_HEIGHT = 200;
-		static const size_t CARD_WIDTH = 100;
+		static const size_t CARD_HEIGHT = 318;
+		static const size_t CARD_WIDTH = 230;
+		static const size_t CARD_OFFSET = 120;
+		static const size_t TEXT_STATUS_X = 250;
+		static const size_t TEXT_STATUS_Y = CARD_HEIGHT + 10;
+
 	private:
 		static const size_t MAX_NUM_CARDS = 11;
 		int handValue;
