@@ -33,18 +33,21 @@ bool Challenger::onInit(){
 		((surf_chip10 = CSurface::OnLoad(chip10))==0) ||
 		((surf_chip5 = CSurface::OnLoad(chip5))==0) ||
 		((surf_chip1 = CSurface::OnLoad(chip1))==0) ||
-		((font = TTF_OpenFont("ttf/elsewher.ttf", 16))==0))
+		((font = TTF_OpenFont("ttf/elsewher.ttf", 25))==0))
 		return false;
 
 
 	// set the text surfaces for initial wager and starting money.
 	SDL_Color textColor = {0, 0, 0, 0};
-	std::ostringstream o;
-	o << wager;
-	surf_text_wager = TTF_RenderText_Solid(font, o.str().c_str(), textColor);
+	std::ostringstream o1;
+	o1 << "Your wager: $";
+	o1 << wager;
+	surf_text_wager = TTF_RenderText_Solid(font, o1.str().c_str(), textColor);
 
-	o << money;
-	surf_text_money = TTF_RenderText_Solid(font, o.str().c_str(), textColor);
+	std::ostringstream o2;
+	o2 << "Cash: $";
+	o2 << money;
+	surf_text_money = TTF_RenderText_Solid(font, o2.str().c_str(), textColor);
 	return true;
 }
 
@@ -54,17 +57,17 @@ void Challenger::onDraw(SDL_Surface* surf_dest, int x, int y){
 
 	// Draw the text fields for wager and money values.
 	CSurface::OnDraw(surf_dest, 
-		surf_text_wager, x + Player::CARD_WIDTH, y + Player::CARD_HEIGHT + 20);
+		surf_text_wager, x + 300, y + 318 + 40);
 	CSurface::OnDraw(surf_dest, 
-		surf_text_money, x + Player::CARD_WIDTH, y + Player::CARD_HEIGHT + 30);
+		surf_text_money, x + 300, y + 318 + 65);
 
 	// Draw the buttons based on the mouse click state
 	CSurface::OnDraw(surf_dest, surf_chip10, x, y);
-	CSurface::OnDraw(surf_dest, surf_chip5, x, y + 30);
-	CSurface::OnDraw(surf_dest, surf_chip1, x, y + 60);
+	CSurface::OnDraw(surf_dest, surf_chip5, x, y + 110);
+	CSurface::OnDraw(surf_dest, surf_chip1, x, y + 220);
 
-	CSurface::OnDraw(surf_dest, surf_hit_unpressed, x, y + Player::CARD_HEIGHT);
-	CSurface::OnDraw(surf_dest, surf_stand_unpressed, x+100, y+Player::CARD_HEIGHT);
+	CSurface::OnDraw(surf_dest, surf_hit_unpressed, x+50, y + 318 + 40);
+	CSurface::OnDraw(surf_dest, surf_stand_unpressed, x+180, y+ 318 + 40);
 }
 
 void Challenger::onCleanup(){

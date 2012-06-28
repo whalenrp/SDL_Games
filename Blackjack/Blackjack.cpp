@@ -24,6 +24,7 @@ int Blackjack::onExecute(){
 			OnEvent(&event);
 		}
 
+		SDL_Delay(50);
 		onRender();
 	}
 

@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <sstream>
+#include <algorithm>
 #include <iostream>
 
 
@@ -9,7 +10,7 @@ Player::Player(): handValue(0), playerNumCards(0),
 Player::~Player(){}
 
 bool Player::onInit(){
-	if ((font = TTF_OpenFont("ttf/elsewher.ttf", 16)) == 0)
+	if ((font = TTF_OpenFont("ttf/elsewher.ttf", 30)) == 0)
 		return false;
 	SDL_Color textColor = {0, 0, 0, 0};
 	std::ostringstream o;
@@ -36,7 +37,7 @@ int Player::addCard(Card* const card){
 	
 	// The values increase up to 13 for the king.
 	// modding the value by 11 will make jack,queen, and king go to 10
-	handValue = handValue + card->getValue()%11;
+	handValue += std::min(10,card->getValue());
 
 	if (card->getValue() == Card::CARD_ACE){
 		++numAces;
@@ -88,11 +89,13 @@ void Player::onDraw(SDL_Surface* surf_dest, int x, int y){
 	// newer cards appearing on top of the stack.
 	for (size_t i=0; i< playerNumCards; ++i){
 		// 20px increment down x for each card.
-		playerCards[i]->draw(surf_dest, x+(60*i) + CARD_WIDTH, y);
+		playerCards[i]->draw(surf_dest, x+(50*i) + CARD_WIDTH + 20, y);
 	}
 
 	// Draw the text for the hand value underneath the cards
-	CSurface::OnDraw(surf_dest, surf_text_status, x + 100, y+CARD_HEIGHT + 10);
+	//CSurface::OnDraw(surf_dest, surf_text_status, x + 100, y+CARD_HEIGHT + 10);
+	if (handValue !=0)
+		CSurface::OnDraw(surf_dest, surf_text_status, x + 250, y + 318 + 10);
 }
 
 void Player::onCleanup(){
