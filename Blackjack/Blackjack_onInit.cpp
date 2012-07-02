@@ -10,7 +10,7 @@ bool Blackjack::onInit(){
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) return false;
 
 	if ((surf_screen = SDL_SetVideoMode(
-			800, 600, 32, SDL_HWSURFACE | SDL_DOUBLEBUF))== 0)
+			1024, 600, 32, SDL_HWSURFACE | SDL_DOUBLEBUF))== 0)
 		return false;
 
 	// Initialize SDL_image library
@@ -28,6 +28,10 @@ bool Blackjack::onInit(){
 	mDeck.shuffle();
 	if (!player1.onInit())
 		return false;
+	if (!dealer.onInit())
+		return false;
+
+	Reset();
 
 	return true;
 }

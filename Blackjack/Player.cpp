@@ -29,7 +29,7 @@ void Player::resetHand(){
 	getHandValue();
 }
 
-int Player::addCard(Card* const card){
+void Player::addCard(Card* const card){
 	if (playerNumCards >= MAX_NUM_CARDS)
 		throw playerNumCards;
 
@@ -48,11 +48,11 @@ int Player::addCard(Card* const card){
 	++playerNumCards;
 
 	// update hand value and text displayed
-	return getHandValue();
+	updateHandValue();
 }
 
 
-int Player::getHandValue(){
+int Player::updateHandValue(){
 	SDL_Color textColor = {0, 0, 0, 0};
 	if (handValue < 21){
 		// display the value of the hand in the text
@@ -71,7 +71,7 @@ int Player::getHandValue(){
 	else if (numAces > 0){
 		handValue = handValue - 10;
 		--numAces;
-		return getHandValue();
+		return updateHandValue();
 	}
 	// The hand has gone over.
 	else{
@@ -88,15 +88,18 @@ void Player::onDraw(SDL_Surface* surf_dest, int x, int y){
 	// Draw all the cards stacked skewed on top of eachother, 
 	// newer cards appearing on top of the stack.
 	for (size_t i=0; i< playerNumCards; ++i){
-		// 50px increment down x for each card.
-		playerCards[i]->draw(surf_dest, x+(50*i) + CARD_OFFSET, y);
+		// 30px increment down x for each card.
+		playerCards[i]->draw(surf_dest, x+(30*i) + CARD_OFFSET, y);
 	}
 
 	// Draw the text for the hand value underneath the cards
-	//CSurface::OnDraw(surf_dest, surf_text_status, x + 100, y+CARD_HEIGHT + 10);
 	if (handValue !=0)
 		CSurface::OnDraw(
-				surf_dest, surf_text_status, x + TEXT_STATUS_X, y + TEXT_STATUS_Y);
+			surf_dest, surf_text_status, x + TEXT_STATUS_X, y + TEXT_STATUS_Y);
+}
+
+int Player::getHandValue(){
+	return handValue;
 }
 
 void Player::onCleanup(){

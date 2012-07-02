@@ -14,14 +14,26 @@ class Blackjack : public CEvent{
 	// Surfaces
 	private:
 		bool running;
+		bool endOfGame;
 		SDL_Surface* surf_screen;
 		SDL_Surface* surf_background;
 		Challenger player1;
+		Player dealer;	
 		Deck mDeck;
 
 	public:
+		
+		// player1's coordinates
+		static const int play_1_x = 100;
+		static const int play_1_y = 300;
+		
+		// dealer's coordinates
+		static const int dealer_x = 100;
+		static const int dealer_y = 50;
 
 		void Reset();
+
+		void finishRound();
 
 	public:
 		Blackjack();

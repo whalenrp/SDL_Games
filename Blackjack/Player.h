@@ -15,10 +15,10 @@ class Player{
 			PLAYER_BLACKJACK
 			};
 
-		static const size_t CARD_HEIGHT = 318;
-		static const size_t CARD_WIDTH = 230;
-		static const size_t CARD_OFFSET = 120;
-		static const size_t TEXT_STATUS_X = 250;
+		static const size_t CARD_HEIGHT = 160;
+		static const size_t CARD_WIDTH = 115;
+		static const size_t CARD_OFFSET = 80;
+		static const size_t TEXT_STATUS_X = 150;
 		static const size_t TEXT_STATUS_Y = CARD_HEIGHT + 10;
 
 	private:
@@ -38,19 +38,20 @@ class Player{
 		// private function that will update the hand variables
 		// based on the number of aces as well as the text 
 		// associated with each hand.
-		virtual int getHandValue();
+		virtual int updateHandValue();
 			
 	public:
 		Player();
-		virtual ~Player() =0;
+		virtual ~Player();
 
 		virtual bool onInit();
 		virtual void resetHand();
 
 		// returns the value of the hand and takes care of updating
 		// the hand values.
-		virtual int addCard(Card* const card);
-		virtual void onDraw(SDL_Surface* surf_dest, int x, int y) =0;
+		virtual void addCard(Card* const card);
+		virtual void onDraw(SDL_Surface* surf_dest, int x, int y);
+		virtual int getHandValue();
 		virtual void onCleanup();
 
 };

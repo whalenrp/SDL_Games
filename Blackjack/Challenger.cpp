@@ -36,6 +36,9 @@ bool Challenger::onInit(){
 		((font = TTF_OpenFont("ttf/elsewher.ttf", 25))==0))
 		return false;
 
+	CSurface::Transparent(surf_chip10, 255, 0, 255);
+	CSurface::Transparent(surf_chip5, 255, 0, 255);
+	CSurface::Transparent(surf_chip1, 255, 0, 255);
 
 	// set the text surfaces for initial wager and starting money.
 	SDL_Color textColor = {0, 0, 0, 0};
@@ -69,6 +72,33 @@ void Challenger::onDraw(SDL_Surface* surf_dest, int x, int y){
 	CSurface::OnDraw(surf_dest, surf_hit_unpressed, x+HIT_X, y + HIT_Y);
 	CSurface::OnDraw(surf_dest, surf_stand_unpressed, x+STAND_X, y+STAND_Y);
 }
+
+int Challenger::getMoney(){
+	return money;
+}
+
+void Challenger::setMoney(int val){
+	money = val;
+	SDL_Color textColor = {0, 0, 0, 0};
+	std::ostringstream o2;
+	o2 << "Cash: $";
+	o2 << money;
+	surf_text_money = TTF_RenderText_Solid(font, o2.str().c_str(), textColor);
+}
+
+int Challenger::getWager(){
+	return wager;
+}
+
+void Challenger::setWager(int val){
+	wager = val;
+	SDL_Color textColor = {0, 0, 0, 0};
+	std::ostringstream o1;
+	o1 << "Your wager: $";
+	o1 << wager;
+	surf_text_wager = TTF_RenderText_Solid(font, o1.str().c_str(), textColor);
+}
+
 
 void Challenger::onCleanup(){
 	SDL_FreeSurface(surf_hit_pressed);
